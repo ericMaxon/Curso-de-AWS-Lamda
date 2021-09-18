@@ -1,5 +1,7 @@
 package com.aprendiendo.aws.handler;
 
+import java.io.IOException;
+
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.aprendiendo.aws.exceptions.LambdaExceptions;
@@ -9,7 +11,6 @@ import com.aprendiendo.aws.Request;
 import com.aprendiendo.aws.Status;
 import com.fasterxml.jackson.jr.ob.JSON;
 
-import java.io.IOException;
 
 public class PaymentLambdaRequestHandler implements RequestHandler<Request<BodyRequest>, BodyResponse> {
 
@@ -25,7 +26,7 @@ public class PaymentLambdaRequestHandler implements RequestHandler<Request<BodyR
             return new BodyResponse(body.getUuid(), new Status(200, "Transaccion Completada"));
         }
 
-        BodyResponse br = new BodyResponse("0000-00000-0000", new Status(400, "Transaccion no se pudo completar"))
+        BodyResponse br = new BodyResponse(body.getUuid(), new Status(400, "Transaccion no se pudo completar"));
         try{
             errorMsg = JSON.std.asString(br);
         }catch (IOException io){

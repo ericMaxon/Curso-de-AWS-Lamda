@@ -1,9 +1,9 @@
 package com.aprendiendo.aws.exceptions;
 
-public class LambdaExceptions extends Throwable {
-    private String message;
+public class LambdaExceptions extends RuntimeException {
 
     public LambdaExceptions(String message) {
-        this.message = message;
+        super(message);
     }
+
 }

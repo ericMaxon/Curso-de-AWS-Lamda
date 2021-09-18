@@ -12,6 +12,9 @@
       "timeout": 30,
       "memorySize": 512,
       "deploymentBucket": "student-serverless-deploy-dev",
+      "environment": {
+        "URL_PRODUCT": "http://localhost/products"
+      },
       "versionFunctions": true,
       "deploymentBucketObject": {
         "name": "student-serverless-deploy-dev"
@@ -120,13 +123,18 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "student-serverless-deploy-dev",
-                "S3Key": "serverless/eric-curso-java/dev/1631984601731-2021-09-18T17:03:21.731Z/target/Curso-1.0-SNAPSHOT.jar"
+                "S3Key": "serverless/eric-curso-java/dev/1631988614293-2021-09-18T18:10:14.293Z/target/Curso-1.0-SNAPSHOT.jar"
               },
               "Handler": "com.aprendiendo.aws.handler.LambdaRequestHandler",
               "Runtime": "java11",
               "FunctionName": "eric-curso-java-dev-base",
               "MemorySize": 512,
               "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "URL_PRODUCT": "http://localhost/products"
+                }
+              },
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -143,13 +151,18 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "student-serverless-deploy-dev",
-                "S3Key": "serverless/eric-curso-java/dev/1631984601731-2021-09-18T17:03:21.731Z/target/Curso-1.0-SNAPSHOT.jar"
+                "S3Key": "serverless/eric-curso-java/dev/1631988614293-2021-09-18T18:10:14.293Z/target/Curso-1.0-SNAPSHOT.jar"
               },
               "Handler": "com.aprendiendo.aws.handler.QueryParamLambdaRequestHandler",
               "Runtime": "java11",
               "FunctionName": "eric-curso-java-dev-product-query",
               "MemorySize": 512,
               "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "URL_PRODUCT": "http://localhost/products"
+                }
+              },
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -166,13 +179,18 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "student-serverless-deploy-dev",
-                "S3Key": "serverless/eric-curso-java/dev/1631984601731-2021-09-18T17:03:21.731Z/target/Curso-1.0-SNAPSHOT.jar"
+                "S3Key": "serverless/eric-curso-java/dev/1631988614293-2021-09-18T18:10:14.293Z/target/Curso-1.0-SNAPSHOT.jar"
               },
               "Handler": "com.aprendiendo.aws.handler.PaymentLambdaRequestHandler",
               "Runtime": "java11",
               "FunctionName": "eric-curso-java-dev-product-payment",
               "MemorySize": 512,
               "Timeout": 30,
+              "Environment": {
+                "Variables": {
+                  "URL_PRODUCT": "http://localhost/products"
+                }
+              },
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -184,34 +202,34 @@
               "ProductDashpaymentLogGroup"
             ]
           },
-          "BaseLambdaVersionndq04t2BJE8hXWNEFX3L73xcZFYVnx5pFB6fCCImNM": {
+          "BaseLambdaVersion6J9h7qk0S1FXErH2dbVxwcEJaQXLIUdH5oCxkjVE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "BaseLambdaFunction"
               },
-              "CodeSha256": "vmetBPTLPCFzpXQzwbloE/frYLveajgsv2LJ7pq1PBY="
+              "CodeSha256": "+5ITUw2+Rud2isINmv7MzfbvvFaK4tEm8hOUpCYOjAU="
             }
           },
-          "ProductDashqueryLambdaVersionunLvsEuaYdu8QYtUhuZjSliILj4UTanWeGMA4hr8yus": {
+          "ProductDashqueryLambdaVersion3loQNg1PqberbaE4VcBRTpVCaOHMJWMoS2SY8X6Z4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ProductDashqueryLambdaFunction"
               },
-              "CodeSha256": "vmetBPTLPCFzpXQzwbloE/frYLveajgsv2LJ7pq1PBY="
+              "CodeSha256": "+5ITUw2+Rud2isINmv7MzfbvvFaK4tEm8hOUpCYOjAU="
             }
           },
-          "ProductDashpaymentLambdaVersionPI6LFI8JkYAbZC6GooJ6AuDQxpo9Hm1hSE0TiIvmlI": {
+          "ProductDashpaymentLambdaVersionBd0aIHCkWJ33j3L9wNawicQAZmICp29fCfgs0LKcqeA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ProductDashpaymentLambdaFunction"
               },
-              "CodeSha256": "vmetBPTLPCFzpXQzwbloE/frYLveajgsv2LJ7pq1PBY="
+              "CodeSha256": "+5ITUw2+Rud2isINmv7MzfbvvFaK4tEm8hOUpCYOjAU="
             }
           },
           "ApiGatewayRestApi": {
@@ -624,51 +642,11 @@
                   },
                   {
                     "StatusCode": "400",
-                    "SelectionPattern": "[\\s\\S]*\\[400\\][\\s\\S]*",
+                    "SelectionPattern": "",
                     "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "401",
-                    "SelectionPattern": "[\\s\\S]*\\[401\\][\\s\\S]*",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "403",
-                    "SelectionPattern": "[\\s\\S]*\\[403\\][\\s\\S]*",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "404",
-                    "SelectionPattern": "[\\s\\S]*\\[404\\][\\s\\S]*",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "422",
-                    "SelectionPattern": "[\\s\\S]*\\[422\\][\\s\\S]*",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "500",
-                    "SelectionPattern": "[\\s\\S]*(Process\\s?exited\\s?before\\s?completing\\s?request|\\[500\\])[\\s\\S]*",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "502",
-                    "SelectionPattern": "[\\s\\S]*\\[502\\][\\s\\S]*",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
-                  },
-                  {
-                    "StatusCode": "504",
-                    "SelectionPattern": "([\\s\\S]*\\[504\\][\\s\\S]*)|(.*Task timed out after \\d+\\.\\d+ seconds$)",
-                    "ResponseParameters": {},
-                    "ResponseTemplates": {}
+                    "ResponseTemplates": {
+                      "application/json": "$input.path('$.errorMessage')"
+                    }
                   }
                 ]
               },
@@ -682,41 +660,6 @@
                   "ResponseParameters": {},
                   "ResponseModels": {},
                   "StatusCode": "400"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "401"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "403"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "404"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "422"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "500"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "502"
-                },
-                {
-                  "ResponseParameters": {},
-                  "ResponseModels": {},
-                  "StatusCode": "504"
                 }
               ]
             },
@@ -724,7 +667,7 @@
               "ProductDashpaymentLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1631984600282": {
+          "ApiGatewayDeployment1631988612745": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -860,7 +803,7 @@
           "BaseLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "BaseLambdaVersionndq04t2BJE8hXWNEFX3L73xcZFYVnx5pFB6fCCImNM"
+              "Ref": "BaseLambdaVersion6J9h7qk0S1FXErH2dbVxwcEJaQXLIUdH5oCxkjVE"
             },
             "Export": {
               "Name": "sls-eric-curso-java-dev-BaseLambdaFunctionQualifiedArn"
@@ -869,7 +812,7 @@
           "ProductDashqueryLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ProductDashqueryLambdaVersionunLvsEuaYdu8QYtUhuZjSliILj4UTanWeGMA4hr8yus"
+              "Ref": "ProductDashqueryLambdaVersion3loQNg1PqberbaE4VcBRTpVCaOHMJWMoS2SY8X6Z4"
             },
             "Export": {
               "Name": "sls-eric-curso-java-dev-ProductDashqueryLambdaFunctionQualifiedArn"
@@ -878,7 +821,7 @@
           "ProductDashpaymentLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ProductDashpaymentLambdaVersionPI6LFI8JkYAbZC6GooJ6AuDQxpo9Hm1hSE0TiIvmlI"
+              "Ref": "ProductDashpaymentLambdaVersionBd0aIHCkWJ33j3L9wNawicQAZmICp29fCfgs0LKcqeA"
             },
             "Export": {
               "Name": "sls-eric-curso-java-dev-ProductDashpaymentLambdaFunctionQualifiedArn"
@@ -967,7 +910,7 @@
         "timeout": 30,
         "runtime": "java11",
         "vpc": {},
-        "versionLogicalId": "BaseLambdaVersionndq04t2BJE8hXWNEFX3L73xcZFYVnx5pFB6fCCImNM"
+        "versionLogicalId": "BaseLambdaVersion6J9h7qk0S1FXErH2dbVxwcEJaQXLIUdH5oCxkjVE"
       },
       "product-query": {
         "handler": "com.aprendiendo.aws.handler.QueryParamLambdaRequestHandler",
@@ -999,7 +942,7 @@
         "timeout": 30,
         "runtime": "java11",
         "vpc": {},
-        "versionLogicalId": "ProductDashqueryLambdaVersionunLvsEuaYdu8QYtUhuZjSliILj4UTanWeGMA4hr8yus"
+        "versionLogicalId": "ProductDashqueryLambdaVersion3loQNg1PqberbaE4VcBRTpVCaOHMJWMoS2SY8X6Z4"
       },
       "product-payment": {
         "handler": "com.aprendiendo.aws.handler.PaymentLambdaRequestHandler",
@@ -1009,13 +952,19 @@
               "method": "post",
               "path": "products/shoes",
               "integration": "AWS",
-              "request": {
-                "passThrough": "NEVER"
-              },
               "response": {
                 "statusCodes": {
-                  "$ref": "$[\"service\"][\"functions\"][\"base\"][\"events\"][0][\"http\"][\"response\"][\"statusCodes\"]"
+                  "200": {
+                    "$ref": "$[\"service\"][\"functions\"][\"base\"][\"events\"][0][\"http\"][\"response\"][\"statusCodes\"][\"200\"]"
+                  },
+                  "400": {
+                    "patter": ".code\":400.*",
+                    "template": "$input.path('$.errorMessage')"
+                  }
                 }
+              },
+              "request": {
+                "passThrough": "NEVER"
               }
             }
           }
@@ -1026,7 +975,7 @@
         "timeout": 30,
         "runtime": "java11",
         "vpc": {},
-        "versionLogicalId": "ProductDashpaymentLambdaVersionPI6LFI8JkYAbZC6GooJ6AuDQxpo9Hm1hSE0TiIvmlI"
+        "versionLogicalId": "ProductDashpaymentLambdaVersionBd0aIHCkWJ33j3L9wNawicQAZmICp29fCfgs0LKcqeA"
       }
     },
     "configValidationMode": "warn",
@@ -1041,7 +990,7 @@
       "package": {
         "artifact": "target/Curso-1.0-SNAPSHOT.jar",
         "deploymentBucket": "student-serverless-deploy-dev",
-        "artifactDirectoryName": "serverless/eric-curso-java/dev/1631984601731-2021-09-18T17:03:21.731Z"
+        "artifactDirectoryName": "serverless/eric-curso-java/dev/1631988614293-2021-09-18T18:10:14.293Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -1051,7 +1000,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/eric-curso-java/dev/1631984601731-2021-09-18T17:03:21.731Z",
+    "artifactDirectoryName": "serverless/eric-curso-java/dev/1631988614293-2021-09-18T18:10:14.293Z",
     "artifact": "target/Curso-1.0-SNAPSHOT.jar"
   }
 }

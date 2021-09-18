@@ -10,6 +10,8 @@ provider:
     memorySize: 512
     deploymentBucket:
         name: student-serverless-deploy-dev
+    environment:
+      URL_PRODUCT: http://localhost/products
 
 package:
     artifact: target/Curso-1.0-SNAPSHOT.jar
