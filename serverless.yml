@@ -1,0 +1,48 @@
+
+service: eric-curso-java
+
+provider:
+    name: aws
+    runtime: java11
+    stage: dev
+    region: us-east-1
+    timeout: 30
+    memorySize: 512
+    deploymentBucket:
+        name: student-serverless-deploy-dev
+
+package:
+    artifact: target/Curso-1.0-SNAPSHOT.jar
+
+functions:
+    base:
+        handler: com.aprendiendo.aws.handler.LambdaRequestHandler
+        events:
+            - http:
+                  method: get
+                  path: /products/shoes
+                  integration: lambda
+
+    product-query:
+        handler: com.aprendiendo.aws.handler.QueryParamLambdaRequestHandler
+        events:
+            - http:
+                  method: get
+                  path: /products/shoes/{shoeId}
+                  integration: lambda
+                  request:
+                    paramethers:
+                        path:
+                            shoeId: true
+    product-payment:
+      handler: com.aprendiendo.aws.handler.PaymentLambdaRequestHandler
+      events:
+        - http:
+            method: post
+            path: /products/shoes
+            integration: lambda
+            response:
+              statusCodes:
+                400:
+                  patter: '.code":400.*'
+                  template: "$input.path('$.errorMessage')"
